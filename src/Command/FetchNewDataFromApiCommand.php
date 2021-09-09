@@ -53,6 +53,9 @@ class FetchNewDataFromApiCommand extends Command
         $this->jobService = $jobService;
     }
 
+    /**
+     * @return void
+     */
     public function initialize(InputInterface $input, OutputInterface $output)
     {
         $this->io = new SymfonyStyle($input, $output);

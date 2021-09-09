@@ -19,7 +19,7 @@ class InstanceService
         $this->entityManager = $entityManager;
     }
 
-    public function createOrUpdate(\stdClass $dungeonRaw, int $type)
+    public function createOrUpdate(\stdClass $dungeonRaw, int $type): void
     {
         if (isset($dungeonRaw->ContentTargetID)) {
             $dungeon = $this->entityManager->getRepository(Instance::class)->find($dungeonRaw->ContentTargetID);

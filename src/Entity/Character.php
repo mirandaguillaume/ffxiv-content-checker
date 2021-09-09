@@ -63,7 +63,7 @@ class Character
         return $this;
     }
 
-    public function addJob(CharacterJob $characterJob)
+    public function addJob(CharacterJob $characterJob): void
     {
         $this->jobs->add($characterJob);
     }

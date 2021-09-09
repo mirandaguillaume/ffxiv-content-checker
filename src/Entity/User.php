@@ -123,6 +123,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @see UserInterface
+     *
+     * @return void
      */
     public function eraseCredentials()
     {
@@ -135,7 +137,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->characters;
     }
 
-    public function addCharacter(Character $character)
+    public function addCharacter(Character $character): void
     {
         $this->characters->add($character);
     }
