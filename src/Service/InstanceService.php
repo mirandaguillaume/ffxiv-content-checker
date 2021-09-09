@@ -6,20 +6,14 @@ use App\Entity\Instance;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
+use stdClass;
 
 class InstanceService
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
+    public function __construct(private EntityManagerInterface $entityManager)
+    {}
 
-    public function __construct(EntityManagerInterface $entityManager)
-    {
-        $this->entityManager = $entityManager;
-    }
-
-    public function createOrUpdate(\stdClass $dungeonRaw, int $type): void
+    public function createOrUpdate(stdClass $dungeonRaw, int $type): void
     {
         if (isset($dungeonRaw->ContentTargetID)) {
             $dungeon = $this->entityManager->getRepository(Instance::class)->find($dungeonRaw->ContentTargetID);

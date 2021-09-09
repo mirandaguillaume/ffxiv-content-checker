@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\CharacterRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
 
 /**
  * @ORM\Entity(repositoryClass=CharacterRepository::class)
@@ -17,19 +18,19 @@ class Character
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private string $name;
 
     /**
      * @ORM\OneToMany(targetEntity="CharacterJob", mappedBy="character")
      */
-    private $jobs;
+    private ArrayCollection $jobs;
 
-    public function __construct()
+    #[Pure] public function __construct()
     {
         $this->jobs = new ArrayCollection();
     }

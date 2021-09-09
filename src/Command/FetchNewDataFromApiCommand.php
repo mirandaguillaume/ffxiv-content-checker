@@ -25,38 +25,17 @@ class FetchNewDataFromApiCommand extends Command
 
     protected static $defaultName = 'fetch:new-data';
 
-    /**
-     * @var SymfonyStyle
-     */
-    private $io;
+    private SymfonyStyle $io;
 
-    /**
-     * @var FFXIVApiClient
-     */
-    private $client;
-
-    /**
-     * @var InstanceService
-     */
-    private $dungeonService;
-
-    /**
-     * @var JobService
-     */
-    private $jobService;
-
-    public function __construct(FFXIVApiClient $client, InstanceService $dungeonService, JobService $jobService)
-    {
+    public function __construct(
+        private FFXIVApiClient $client,
+        private InstanceService $dungeonService,
+        private JobService $jobService
+    ) {
         parent::__construct();
-        $this->client = $client;
-        $this->dungeonService = $dungeonService;
-        $this->jobService = $jobService;
     }
 
-    /**
-     * @return void
-     */
-    public function initialize(InputInterface $input, OutputInterface $output)
+    public function initialize(InputInterface $input, OutputInterface $output): void
     {
         $this->io = new SymfonyStyle($input, $output);
     }
@@ -75,7 +54,7 @@ class FetchNewDataFromApiCommand extends Command
                 );
             }
 
-            $this->io->success("Finished loading contentType {$contentType->Name}.");
+            $this->io->success("Finished loading contentType $contentType->Name.");
         }
 
         $classJobs = $this->client->getClient()->content->ClassJob()->list();

@@ -15,19 +15,19 @@ class CharacterJob
      * @ORM\ManyToOne(targetEntity="App\Entity\Job")
      * @ORM\JoinColumn(name="job_id", referencedColumnName="id")
      */
-    private $job;
+    private Job $job;
 
     /**
      * @ORM\Id
      * @ORM\ManyToOne(targetEntity="App\Entity\Character", inversedBy="jobs")
      * @ORM\JoinColumn(name="character_id", referencedColumnName="id")
      */
-    private $character;
+    private Character $character;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $level;
+    private int $level;
 
     public function getLevel(): ?int
     {
@@ -41,40 +41,24 @@ class CharacterJob
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getJob()
+    public function getJob(): Job
     {
         return $this->job;
     }
 
-    /**
-     * @param mixed $job
-     *
-     * @return CharacterJob
-     */
-    public function setJob($job)
+    public function setJob(Job $job): CharacterJob
     {
         $this->job = $job;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getCharacter()
+    public function getCharacter(): Character
     {
         return $this->character;
     }
 
-    /**
-     * @param mixed $character
-     *
-     * @return CharacterJob
-     */
-    public function setCharacter($character)
+    public function setCharacter(Character $character): CharacterJob
     {
         $this->character = $character;
 

@@ -14,27 +14,27 @@ class Instance
      * @ORM\Id
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private string $name;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $classJobRequired;
+    private int $classJobRequired;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $classJobSync;
+    private int $classJobSync;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $type;
+    private int $type;
 
     public function __construct(int $type)
     {

@@ -6,20 +6,14 @@ use App\Entity\Job;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
+use stdClass;
 
 class JobService
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
+    public function __construct(private EntityManagerInterface $entityManager)
+    {}
 
-    public function __construct(EntityManagerInterface $entityManager)
-    {
-        $this->entityManager = $entityManager;
-    }
-
-    public function createOrUpdate(\stdClass $rawJob): void
+    public function createOrUpdate(stdClass $rawJob): void
     {
         $job = $this->entityManager->getRepository(Job::class)->find($rawJob->ID);
 

@@ -6,15 +6,8 @@ use XIVAPI\XIVAPI;
 
 class FFXIVApiClient
 {
-    /**
-     * @var string
-     */
-    private $key;
-
-    public function __construct(string $key)
-    {
-        $this->key = $key;
-    }
+    public function __construct(private string $key)
+    {}
 
     public function getClient(): XIVAPI
     {
