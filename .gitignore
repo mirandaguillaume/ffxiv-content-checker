@@ -11,3 +11,5 @@ docker-data/
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
+
+.env
