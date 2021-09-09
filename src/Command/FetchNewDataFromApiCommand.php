@@ -2,8 +2,8 @@
 
 namespace App\Command;
 
-use App\Service\InstanceService;
 use App\FFXIVApiClient;
+use App\Service\InstanceService;
 use App\Service\JobService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -87,7 +87,7 @@ class FetchNewDataFromApiCommand extends Command
             ;
         }
 
-        $this->io->success("Finished loading jobs.");
+        $this->io->success('Finished loading jobs.');
 
         return 0;
     }

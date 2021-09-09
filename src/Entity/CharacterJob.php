@@ -57,6 +57,7 @@ class CharacterJob
     public function setJob($job)
     {
         $this->job = $job;
+
         return $this;
     }
 
@@ -76,6 +77,7 @@ class CharacterJob
     public function setCharacter($character)
     {
         $this->character = $character;
+
         return $this;
     }
 }
