@@ -4,8 +4,9 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use JetBrains\PhpStorm\Pure;
+use Doctrine\ORM\PersistentCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -42,14 +43,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Character", mappedBy="user")
      */
-    private ArrayCollection $characters;
+    private Collection $characters;
 
     /**
      * @ORM\Column(type="boolean")
      */
     private $isVerified = false;
 
-    #[Pure] public function __construct()
+    public function __construct()
     {
         $this->characters = new ArrayCollection();
     }
@@ -131,8 +132,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @see UserInterface
-     *
-     * @return void
      */
     public function eraseCredentials(): void
     {
