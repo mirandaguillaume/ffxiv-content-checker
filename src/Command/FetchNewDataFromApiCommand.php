@@ -66,7 +66,7 @@ class FetchNewDataFromApiCommand extends Command
                 );
             }
 
-            $this->io->success("Finished contentType {$contentType->Name}");
+            $this->io->success("Finished loading contentType {$contentType->Name}.");
         }
 
         return 0;
