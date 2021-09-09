@@ -1,0 +1,4 @@
+framework:
+    mailer:
+        envelope:
+            recipients: ['guillaume11miranda@gmail.com']
